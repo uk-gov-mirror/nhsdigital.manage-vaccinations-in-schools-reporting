@@ -35,7 +35,7 @@ def test_when_session_has_a_user_id_and_is_not_expired_it_does_not_redirect(
             "cohort": 546,
             "vaccinated": 456,
             "not_vaccinated": 90,
-            "vaccinations_given": 402,
+            "vaccinations_given": {"school_count": 350, "community_count": 52},
             "consent_given": 400,
             "no_consent": 146,
             "consent_no_response": 100,
@@ -45,17 +45,20 @@ def test_when_session_has_a_user_id_and_is_not_expired_it_does_not_redirect(
                 {
                     "month": "September",
                     "year": 2025,
-                    "count": 121,
+                    "school_count": 121,
+                    "community_count": 0,
                 },
                 {
                     "month": "October",
                     "year": 2025,
-                    "count": 145,
+                    "school_count": 145,
+                    "community_count": 0,
                 },
                 {
                     "month": "November",
                     "year": 2025,
-                    "count": 136,
+                    "school_count": 136,
+                    "community_count": 0,
                 },
             ],
         }
