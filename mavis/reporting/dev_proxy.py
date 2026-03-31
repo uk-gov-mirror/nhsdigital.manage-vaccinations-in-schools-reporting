@@ -22,10 +22,9 @@ def proxy_to_mavis(path):
         method=request.method,
         url=url,
         headers=headers,
-        data=request.get_data(),
+        content=request.get_data(),
         cookies=request.cookies,
-        allow_redirects=False,
-        stream=True,
+        follow_redirects=False,
     )
 
     excluded_headers = [
@@ -36,7 +35,7 @@ def proxy_to_mavis(path):
     ]
     response_headers = [
         (k, v.replace(backend_url, proxy_url) if k.lower() == "location" else v)
-        for k, v in resp.raw.headers.items()
+        for k, v in resp.headers.items()
         if k.lower() not in excluded_headers
     ]
 
