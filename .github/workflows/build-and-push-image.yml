@@ -131,8 +131,13 @@ jobs:
         run: >-
           docker tag mavis-reporting:latest
           "${{ steps.login-ecr.outputs.registry }}/mavis/reporting":"${{ inputs.git-sha || github.sha }}"
+      - name: Tag Docker image with e2e-testing
+        if: env.PUSH_IMAGE_TO_PRODUCTION == 'true'
+        run: >-
+          docker tag mavis-reporting:latest
+          "${{ steps.login-ecr.outputs.registry }}/mavis/reporting":e2e-testing
       - name: Push Docker image
         run: >-
-          docker push
-          "${{ steps.login-ecr.outputs.registry }}/mavis/reporting":"${{ inputs.git-sha || github.sha }}"
+          docker push --all-tags
+          "${{ steps.login-ecr.outputs.registry }}/mavis/reporting"
       # yamllint enable rule:line-length
