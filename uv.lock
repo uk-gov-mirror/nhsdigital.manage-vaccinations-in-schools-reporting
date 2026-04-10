@@ -335,7 +335,7 @@ requires-dist = [
     { name = "flask-wtf", specifier = ">=1.2.2" },
     { name = "gunicorn", extras = ["http2"], specifier = ">=25.0.1" },
     { name = "httpx", specifier = ">=0.28.1" },
-    { name = "nhsuk-frontend-jinja", specifier = "==0.7.2" },
+    { name = "nhsuk-frontend-jinja", specifier = "==0.8.0" },
     { name = "py-healthcheck", specifier = ">=1.10.1" },
     { name = "pyjwt", specifier = ">=2.10.1" },
     { name = "sentry-sdk", extras = ["flask"], specifier = ">=2.37.1" },
@@ -382,14 +382,14 @@ wheels = [
 
 [[package]]
 name = "nhsuk-frontend-jinja"
-version = "0.7.2"
+version = "0.8.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jinja2" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c0/5e/132ee72606714dddeb79ba6820e4879462e4ebd8cdaf482233539619017d/nhsuk_frontend_jinja-0.7.2.tar.gz", hash = "sha256:a427903b553c430f7665c85bb05b173d5400dfee92d64d0f41a43d08e7e1fd27", size = 69091, upload-time = "2026-02-09T15:05:47.381Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/02/d8cc2b96334b4ab04e0f7cf6d09d75e668b3de65cee8d22f329929efd06e/nhsuk_frontend_jinja-0.8.0.tar.gz", hash = "sha256:14a0ec0e8284bb918683f07cd69755d777fcda2350d1d012a61748f57e2d6d9b", size = 72350, upload-time = "2026-03-31T15:36:03.865Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/aa/11/25411c9e4bf24aa35383da5594a7ce623bfbea8d3d3813964fee905f0843/nhsuk_frontend_jinja-0.7.2-py3-none-any.whl", hash = "sha256:2f9892e115c6208c352e1a95755dbc2be644476a24089efb2ef27cb1c30680d3", size = 60115, upload-time = "2026-02-09T15:05:46.17Z" },
+    { url = "https://files.pythonhosted.org/packages/68/07/def4d5f6e1cca3688c313cb40fd3f34fe452ce44d8af92ea6c084a98527f/nhsuk_frontend_jinja-0.8.0-py3-none-any.whl", hash = "sha256:fe9e3b9c25e673daf1f9173fd4749bc2230d5d4c44ae6e5499ee2b0370936b41", size = 64384, upload-time = "2026-03-31T15:36:01.983Z" },
 ]
 
 [[package]]

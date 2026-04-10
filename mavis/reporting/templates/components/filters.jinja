@@ -104,12 +104,15 @@
     <div class="nhsuk-button-group">
       {{ button({
         "text": "Update results",
-        "classes": "nhsuk-button--secondary nhsuk-button--small js-hide"
+        "variant": "secondary",
+        "small": true,
+        "classes": "js-hide"
       }) }}
 
       {{ button({
         "text": "Clear filters",
-        "classes": "nhsuk-button--secondary nhsuk-button--small",
+        "variant": "secondary",
+        "small": true,
         "href": params.form_action
       }) }}
     </div>
