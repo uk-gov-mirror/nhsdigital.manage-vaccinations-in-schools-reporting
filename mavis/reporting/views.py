@@ -79,6 +79,7 @@ def start_download(workgroup):
     secondary_navigation_items = generate_secondary_nav_items(
         team.workgroup,
         current_page="download",
+        request=request,
     )
 
     return render_template(
@@ -135,6 +136,7 @@ def vaccinations(workgroup):
     secondary_navigation_items = generate_secondary_nav_items(
         team.workgroup,
         current_page="vaccinations",
+        request=request,
     )
 
     filters, year_groups = build_report_filters(team, g.api_client)
@@ -166,6 +168,7 @@ def consent(workgroup):
     secondary_navigation_items = generate_secondary_nav_items(
         team.workgroup,
         current_page="consent",
+        request=request,
     )
 
     filters, year_groups = build_report_filters(team, g.api_client)
@@ -197,6 +200,7 @@ def schools(workgroup):
     secondary_navigation_items = generate_secondary_nav_items(
         team.workgroup,
         current_page="schools",
+        request=request,
     )
 
     filters, year_groups = build_report_filters(team, g.api_client)
@@ -228,6 +232,7 @@ def local_authorities(workgroup):
     secondary_navigation_items = generate_secondary_nav_items(
         team.workgroup,
         current_page="local_authorities",
+        request=request,
     )
 
     filters, year_groups = build_report_filters(team, g.api_client)

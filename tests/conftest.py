@@ -96,3 +96,4 @@ class MockRequest:
     def __init__(self, **kwargs):
         self.host_url = kwargs.get("host_url")
         self.full_path = kwargs.get("full_path")
+        self.cookies = kwargs.get("cookies", {})
