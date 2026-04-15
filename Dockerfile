@@ -46,4 +46,5 @@ VOLUME ["/tmp", "/var/lib/amazon/ssm"]
 
 ENV PORT=5000
 COPY mavis/startup.sh /app/
+COPY mavis/export_root_url.sh /app/
 CMD ["/app/startup.sh"]
