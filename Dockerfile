@@ -30,7 +30,7 @@ COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /app/mavis /app/mavis
 COPY --from=builder /app/pyproject.toml /app/pyproject.toml
 
-ADD config/credentials/*.enc.yaml /app/config/credentials/
+ADD config/credentials/* /app/config/credentials/
 
 # Don't copy mise.toml, only the environment-specific ones
 ADD mise.*.toml /app/
