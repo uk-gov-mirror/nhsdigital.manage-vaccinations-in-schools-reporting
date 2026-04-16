@@ -11,5 +11,5 @@ SOPS_AGE_KEY_FILE = "{{vars.secret_file}}"
 _.file = "{{vars.credentials_file}}"
 
 FLASK_ENV = "production"
-MAVIS_ROOT_URL = "http://web:4000/"
+# MAVIS_ROOT_URL = "configured by terraform/app/variables.tf in the mavis repo"
 # ROOT_URL = "configured by terraform/app/variables.tf in the mavis repo"
