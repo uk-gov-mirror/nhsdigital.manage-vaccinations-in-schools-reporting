@@ -52,12 +52,14 @@
     {% for row in data.monthly_vaccinations_given %}
       {% set _ = rows.append([
         { "text": row.month ~ " " ~ row.year },
-        { "text": row.count | thousands, "format": "numeric" }
+        { "text": row.school_count | thousands, "format": "numeric" },
+        { "text": row.community_count | thousands, "format": "numeric" }
       ]) %}
     {% endfor %}
     {% set _ = rows.append([
       { "text": "Total" },
-      { "text": data.vaccinations_given | thousands, "format": "numeric" }
+      { "text": data.vaccinations_given.school_count | thousands, "format": "numeric" },
+      { "text": data.vaccinations_given.community_count | thousands, "format": "numeric" }
     ]) %}
 
     {{ table({
@@ -66,7 +68,8 @@
       "panel": true,
       "head": [
         { "text": "Month", "format": "date"},
-        { "text": "Number of vaccinations", "format": "numeric" }
+        { "text": "School", "format": "numeric" },
+        { "text": "Community", "format": "numeric" }
       ],
       "rows": rows
     }) }}
