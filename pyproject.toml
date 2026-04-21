@@ -10,7 +10,7 @@ dependencies = [
     "gunicorn[http2]>=25.3.0",
     "py-healthcheck>=1.10.1",
     "pyjwt>=2.10.1",
-    "sentry-sdk[flask]>=2.57.0",
+    "sentry-sdk[flask]>=2.58.0",
     "flask-wtf>=1.2.2",
     "httpx>=0.28.1",
 ]
