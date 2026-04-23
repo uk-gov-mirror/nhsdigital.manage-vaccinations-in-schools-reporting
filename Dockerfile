@@ -30,7 +30,7 @@ COPY --from=builder /app/.venv /app/.venv
 COPY --from=builder /app/mavis /app/mavis
 COPY --from=builder /app/pyproject.toml /app/pyproject.toml
 
-ADD config/credentials/*.enc.yaml /app/config/credentials/
+ADD config/credentials/* /app/config/credentials/
 
 # Don't copy mise.toml, only the environment-specific ones
 ADD mise.*.toml /app/
@@ -46,4 +46,5 @@ VOLUME ["/tmp", "/var/lib/amazon/ssm"]
 
 ENV PORT=5000
 COPY mavis/startup.sh /app/
+COPY mavis/export_root_url.sh /app/
 CMD ["/app/startup.sh"]
