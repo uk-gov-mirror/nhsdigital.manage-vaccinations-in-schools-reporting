@@ -38,6 +38,21 @@ def test_valid_vaccination_data(api_client, mock_mavis_get_request):
                 "consent_no_response": 30,
                 "consent_refused": 8,
                 "consent_conflicts": 2,
+                "consent_refusal_reasons": {
+                    "contains_gelatine": 1,
+                    "already_vaccinated": 2,
+                    "will_be_vaccinated_elsewhere": 1,
+                    "medical_reasons": 1,
+                    "personal_choice": 2,
+                    "other": 1,
+                },
+                "consent_routes": {
+                    "website": 40,
+                    "phone": 10,
+                    "paper": 5,
+                    "in_person": 3,
+                    "self_consent": 2,
+                },
             }
         )
     )
@@ -48,6 +63,8 @@ def test_valid_vaccination_data(api_client, mock_mavis_get_request):
     assert "vaccinated_percentage" in result
     assert "consent_refused_percentage" in result
     assert "consent_conflicts_percentage" in result
+    assert "consent_refusal_reasons_percentages" in result
+    assert "consent_routes_percentages" in result
 
 
 class TestGetYearGroupsForProgramme:

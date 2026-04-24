@@ -35,6 +35,21 @@ class MavisApiClient:
             data["consent_no_response_percentage"] = 0
             data["consent_refused_percentage"] = 0
             data["consent_conflicts_percentage"] = 0
+
+        refused = data.get("consent_refused", 0)
+        refusal_reasons = data.get("consent_refusal_reasons", {})
+        data["consent_refusal_reasons_percentages"] = {
+            k: v / refused if refused > 0 else 0
+            for k, v in refusal_reasons.items()
+        }
+
+        route_counts = data.get("consent_routes", {})
+        route_total = sum(route_counts.values())
+        data["consent_routes_percentages"] = {
+            k: v / route_total if route_total > 0 else 0
+            for k, v in route_counts.items()
+        }
+
         return data
 
     def get_vaccination_data(self, filters=None):
