@@ -217,6 +217,10 @@ class MavisApiClient:
                 "value": "will_be_vaccinated_elsewhere",
                 "text": "Vaccine will be given elsewhere",
             },
+            {
+                "value": "do_not_want_vaccination_at_school",
+                "text": "Do not want vaccination at school",
+            },
             {"value": "medical_reasons", "text": "Medical reasons"},
             {"value": "personal_choice", "text": "Personal choice"},
             {"value": "other", "text": "Other"},
