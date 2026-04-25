@@ -39,8 +39,7 @@ class MavisApiClient:
         refused = data.get("consent_refused", 0)
         refusal_reasons = data.get("consent_refusal_reasons", {})
         data["consent_refusal_reasons_percentages"] = {
-            k: v / refused if refused > 0 else 0
-            for k, v in refusal_reasons.items()
+            k: v / refused if refused > 0 else 0 for k, v in refusal_reasons.items()
         }
 
         route_counts = data.get("consent_routes", {})
@@ -207,4 +206,26 @@ class MavisApiClient:
             {"value": "male", "text": "Male"},
             {"value": "not known", "text": "Not known"},
             {"value": "not specified", "text": "Not specified"},
+        ]
+
+    def get_consent_refusal_reasons(self) -> list[dict]:
+        return [
+            {"value": "contains_gelatine", "text": "Vaccine contains gelatine"},
+            {"value": "already_vaccinated", "text": "Already vaccinated"},
+            {
+                "value": "will_be_vaccinated_elsewhere",
+                "text": "Vaccine will be given elsewhere",
+            },
+            {"value": "medical_reasons", "text": "Medical reasons"},
+            {"value": "personal_choice", "text": "Personal choice"},
+            {"value": "other", "text": "Other"},
+        ]
+
+    def get_consent_routes(self) -> list[dict]:
+        return [
+            {"value": "website", "text": "Website"},
+            {"value": "phone", "text": "Phone"},
+            {"value": "paper", "text": "Paper"},
+            {"value": "in_person", "text": "In person"},
+            {"value": "self_consent", "text": "Self-consent"},
         ]

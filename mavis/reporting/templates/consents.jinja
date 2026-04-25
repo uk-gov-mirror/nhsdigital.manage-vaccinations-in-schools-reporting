@@ -77,20 +77,11 @@
       }) }}
     </div>
 
-    {% set refusal_reasons = [
-      ["contains_gelatine", "Vaccine contains gelatine"],
-      ["already_vaccinated", "Already vaccinated"],
-      ["will_be_vaccinated_elsewhere", "Vaccine will be given elsewhere"],
-      ["medical_reasons", "Medical reasons"],
-      ["personal_choice", "Personal choice"],
-      ["other", "Other"],
-    ] %}
-
     {% set refusal_rows = [] %}
-    {% for key, label in refusal_reasons %}
+    {% for reason in refusal_reasons %}
       {% set _ = refusal_rows.append([
-        { "text": label },
-        { "text": data["consent_refusal_reasons_percentages"][key] | percentage, "format": "numeric" }
+        { "text": reason.text },
+        { "text": data["consent_refusal_reasons_percentages"][reason.value] | percentage, "format": "numeric" }
       ]) %}
     {% endfor %}
 
@@ -105,19 +96,11 @@
       "rows": refusal_rows
     }) }}
 
-    {% set consent_routes = [
-      ["website", "Website"],
-      ["phone", "Phone"],
-      ["paper", "Paper"],
-      ["in_person", "In person"],
-      ["self_consent", "Self-consent"],
-    ] %}
-
     {% set route_rows = [] %}
-    {% for key, label in consent_routes %}
+    {% for route in consent_routes %}
       {% set _ = route_rows.append([
-        { "text": label },
-        { "text": data["consent_routes_percentages"][key] | percentage, "format": "numeric" }
+        { "text": route.text },
+        { "text": data["consent_routes_percentages"][route.value] | percentage, "format": "numeric" }
       ]) %}
     {% endfor %}
 
