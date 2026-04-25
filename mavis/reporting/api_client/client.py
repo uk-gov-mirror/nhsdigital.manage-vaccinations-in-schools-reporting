@@ -36,10 +36,11 @@ class MavisApiClient:
             data["consent_refused_percentage"] = 0
             data["consent_conflicts_percentage"] = 0
 
-        refused = data.get("consent_refused", 0)
-        refusal_reasons = data.get("consent_refusal_reasons", {})
+        refusal_reason_counts = data.get("consent_refusal_reasons", {})
+        refusal_reason_total = sum(refusal_reason_counts.values())
         data["consent_refusal_reasons_percentages"] = {
-            k: v / refused if refused > 0 else 0 for k, v in refusal_reasons.items()
+            k: v / refusal_reason_total if refusal_reason_total > 0 else 0
+            for k, v in refusal_reason_counts.items()
         }
 
         route_counts = data.get("consent_routes", {})
