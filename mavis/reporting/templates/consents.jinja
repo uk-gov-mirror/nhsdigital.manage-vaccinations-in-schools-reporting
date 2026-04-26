@@ -77,6 +77,44 @@
       }) }}
     </div>
 
+    {% set refusal_rows = [] %}
+    {% for reason in refusal_reasons %}
+      {% set _ = refusal_rows.append([
+        { "text": reason.text },
+        { "text": data["consent_refusal_reasons_percentages"][reason.value] | percentage, "format": "numeric" }
+      ]) %}
+    {% endfor %}
+
+    {{ table({
+      "heading": "Reasons consent refused",
+      "tableClasses": "nhsuk-table--data",
+      "panel": true,
+      "head": [
+        { "text": "Reason" },
+        { "text": "Percentage", "format": "numeric" }
+      ],
+      "rows": refusal_rows
+    }) }}
+
+    {% set route_rows = [] %}
+    {% for route in consent_routes %}
+      {% set _ = route_rows.append([
+        { "text": route.text },
+        { "text": data["consent_routes_percentages"][route.value] | percentage, "format": "numeric" }
+      ]) %}
+    {% endfor %}
+
+    {{ table({
+      "heading": "Consent responses by method",
+      "tableClasses": "nhsuk-table--data",
+      "panel": true,
+      "head": [
+        { "text": "Method" },
+        { "text": "Percentage", "format": "numeric" }
+      ],
+      "rows": route_rows
+    }) }}
+
     <p class="nhsuk-body-m nhsuk-u-margin-bottom-6">
       This data was last updated on <strong>{{ last_updated_time }}</strong>.
     </p>

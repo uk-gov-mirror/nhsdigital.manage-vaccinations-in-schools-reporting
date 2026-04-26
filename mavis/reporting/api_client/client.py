@@ -35,6 +35,21 @@ class MavisApiClient:
             data["consent_no_response_percentage"] = 0
             data["consent_refused_percentage"] = 0
             data["consent_conflicts_percentage"] = 0
+
+        refusal_reason_counts = data.get("consent_refusal_reasons", {})
+        refusal_reason_total = sum(refusal_reason_counts.values())
+        data["consent_refusal_reasons_percentages"] = {
+            k: v / refusal_reason_total if refusal_reason_total > 0 else 0
+            for k, v in refusal_reason_counts.items()
+        }
+
+        route_counts = data.get("consent_routes", {})
+        route_total = sum(route_counts.values())
+        data["consent_routes_percentages"] = {
+            k: v / route_total if route_total > 0 else 0
+            for k, v in route_counts.items()
+        }
+
         return data
 
     def get_vaccination_data(self, filters=None):
@@ -192,4 +207,30 @@ class MavisApiClient:
             {"value": "male", "text": "Male"},
             {"value": "not known", "text": "Not known"},
             {"value": "not specified", "text": "Not specified"},
+        ]
+
+    def get_consent_refusal_reasons(self) -> list[dict]:
+        return [
+            {"value": "contains_gelatine", "text": "Vaccine contains gelatine"},
+            {"value": "already_vaccinated", "text": "Already vaccinated"},
+            {
+                "value": "will_be_vaccinated_elsewhere",
+                "text": "Vaccine will be given elsewhere",
+            },
+            {
+                "value": "do_not_want_vaccination_at_school",
+                "text": "Do not want vaccination at school",
+            },
+            {"value": "medical_reasons", "text": "Medical reasons"},
+            {"value": "personal_choice", "text": "Personal choice"},
+            {"value": "other", "text": "Other"},
+        ]
+
+    def get_consent_routes(self) -> list[dict]:
+        return [
+            {"value": "website", "text": "Website"},
+            {"value": "phone", "text": "Phone"},
+            {"value": "paper", "text": "Paper"},
+            {"value": "in_person", "text": "In person"},
+            {"value": "self_consent", "text": "Self-consent"},
         ]

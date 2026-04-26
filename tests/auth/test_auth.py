@@ -41,6 +41,21 @@ def test_when_session_has_a_user_id_and_is_not_expired_it_does_not_redirect(
             "consent_no_response": 100,
             "consent_refused": 30,
             "consent_conflicts": 16,
+            "consent_refusal_reasons": {
+                "contains_gelatine": 1,
+                "already_vaccinated": 8,
+                "will_be_vaccinated_elsewhere": 5,
+                "medical_reasons": 3,
+                "personal_choice": 12,
+                "other": 1,
+            },
+            "consent_routes": {
+                "website": 320,
+                "phone": 45,
+                "paper": 22,
+                "in_person": 10,
+                "self_consent": 3,
+            },
             "monthly_vaccinations_given": [
                 {
                     "month": "September",
