@@ -178,6 +178,8 @@ def consent(workgroup):
         year_groups=year_groups,
         genders=g.api_client.get_genders(),
         academic_year=get_current_academic_year_range(),
+        refusal_reasons=g.api_client.get_consent_refusal_reasons(),
+        consent_routes=g.api_client.get_consent_routes(),
         data=data,
         current_filters=filters,
         selected_item_text=selected_item_text,
