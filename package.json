@@ -9,7 +9,7 @@
     "build:js:dev": "esbuild mavis/reporting/javascript/app.js --bundle --outfile=mavis/reporting/static/js/app.js --sourcemap --minify --watch=forever"
   },
   "dependencies": {
-    "htmx.org": "^2.0.8",
+    "htmx.org": "^2.0.9",
     "nhsuk-frontend": "^10.4.2"
   },
   "devDependencies": {
