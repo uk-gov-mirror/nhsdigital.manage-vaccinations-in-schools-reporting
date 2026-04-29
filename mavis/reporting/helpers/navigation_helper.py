@@ -1,8 +1,6 @@
-import json
-from urllib.parse import unquote_plus
-
-from flask import current_app
 from markupsafe import Markup
+
+from mavis.reporting.helpers.reporting_context_helper import get_reporting_context
 
 FALLBACK_ITEMS = [
     {"path": "/schools", "title": "Schools"},
@@ -18,16 +16,9 @@ FALLBACK_ITEMS = [
 
 
 def build_navigation_items(request):
-    items = FALLBACK_ITEMS
-    if cookie_value := request.cookies.get("mavis_navigation_items"):
-        try:
-            decoded_value = unquote_plus(cookie_value)
-            if parsed := json.loads(decoded_value):
-                items = parsed
-        except (json.JSONDecodeError, ValueError):
-            current_app.logger.warning(
-                f"Failed to parse navigation items cookie: {cookie_value}"
-            )
+    items = get_reporting_context(request).get("navigation_items")
+    if not isinstance(items, list):
+        items = FALLBACK_ITEMS
 
     nav_items: list[dict] = []
     for item in items:
