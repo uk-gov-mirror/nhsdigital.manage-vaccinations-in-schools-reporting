@@ -1,8 +1,11 @@
-from flask import url_for
+from flask import current_app, url_for
+
+from mavis.reporting.helpers import mavis_helper
+from mavis.reporting.helpers.reporting_context_helper import get_reporting_context
 
 
-def generate_secondary_nav_items(team_workgroup: str, current_page: str):
-    return [
+def generate_secondary_nav_items(team_workgroup: str, current_page: str, request=None):
+    items = [
         {
             "text": "Vaccinations",
             "href": url_for("main.vaccinations", workgroup=team_workgroup),
@@ -29,3 +32,16 @@ def generate_secondary_nav_items(team_workgroup: str, current_page: str):
             "current": current_page == "download",
         },
     ]
+
+    if get_reporting_context(request).get("careplus_reports_tab_visible") is True:
+        items.append(
+            {
+                "text": "CarePlus reports",
+                "href": mavis_helper.mavis_public_url(
+                    current_app, "/careplus-reports/"
+                ),
+                "current": False,
+            }
+        )
+
+    return items
